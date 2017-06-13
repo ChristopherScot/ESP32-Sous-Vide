@@ -1,4 +1,4 @@
-// this library is public domain. enjoy!
+// Thanks to ladyada for her public domain thermocoupe code
 // www.ladyada.net/learn/sensors/thermocouple
 
  #include "Arduino.h"

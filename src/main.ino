@@ -51,12 +51,17 @@
 //     }
 
 #include "max6675.h"
-
+#include "SSD1306.h" // alias for `#include "SSD1306Wire.h"`
+#include "NewFonts.h"
+int oledSDA = 22;
+int oledSCL = 21;
 int thermoDO = 27;
 int thermoCS = 26;
 int thermoCLK = 25;
 
 MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
+SSD1306  display(0x3c, oledSDA, oledSCL);
+
 int vccPin = 33;
 int gndPin = 32;
   
@@ -65,10 +70,11 @@ void setup() {
   // use Arduino pins 
   pinMode(vccPin, OUTPUT); digitalWrite(vccPin, HIGH);
   pinMode(gndPin, OUTPUT); digitalWrite(gndPin, LOW);
-  
+  display.init();
   Serial.println("MAX6675 test");
   // wait for MAX chip to stabilize
   delay(500);
+  display.flipScreenVertically();
 }
 
 void loop() {
@@ -82,8 +88,15 @@ void loop() {
   tempavg = (temp1+temp2+temp3)/3;
   int intTempAvg =(int)(tempavg < 0 ? (tempavg - 0.5) : (tempavg + 0.5));
   
-   Serial.print("F = ");
-   Serial.println(intTempAvg);
- 
+   String stringTemp = "500 F";
+   stringTemp = String(intTempAvg) + "° F";
+   //Serial.print("°F = ");
+  // Serial.println(intTempAvg);
+   display.clear();
+   display.setTextAlignment(TEXT_ALIGN_CENTER);
+   display.setFont(Roboto_Medium_26);
+   display.drawString(64, 22, stringTemp);
+   Serial.println(stringTemp);
+   display.display();
    delay(1000);
 }
