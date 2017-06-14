@@ -42,6 +42,7 @@
                 "c:/Users/Christopher/Documents/ESP32/src",
                 "c:/Users/Christopher/Documents/ESP32/lib/MAX6675",
                 "c:/Users/Christopher/Documents/ESP32/lib/SSD1306",
+                "c:/Users/Christopher/Documents/ESP32/lib/DS18B20",
                 "C:/Users/Christopher/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "C:/Users/Christopher/.platformio/packages/framework-arduinoespressif32/libraries/ESP32/src",
                 "C:/Users/Christopher/.platformio/packages/framework-arduinoespressif32/libraries/ESPmDNS/src",
